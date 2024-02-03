@@ -15,12 +15,13 @@ const UpdatePrompt = () => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
+            if (!promptId) return;
             const response = await fetch(`/api/prompt/${promptId}`);
             const data = await response.json();
 
             setPost({
-                prompt: data.prompt,
-                tag: data.tag,
+                prompt: data.prompt || '',
+                tag: data.tag || '',
             });
         };
 
