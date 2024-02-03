@@ -52,7 +52,14 @@ const UpdatePrompt = () => {
         }
     };
 
+    if (!promptId) {
+        return (
+            <div>Error, use an ID</div>
+        )
+    }
+
     return (
+
         <Form
             type='Edit'
             post={post}
