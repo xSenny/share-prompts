@@ -4,12 +4,10 @@ export const GET = async(req, res) => {
     try {
         await connectToDB();
         const prompts = await Prompt.find({}).populate('creator');
-        res.setHeader('Cache-Control', 'no-store');
-        res.setHeader('Content-Type', 'application/json');
-
-        // Return the response
-        return res.status(200).json(prompts);
+        return new Response(JSON.stringify(prompts), {status: 200, headers: {
+            'Cache-Control': 'no-store'
+            }})
     } catch (error) {
-        return res.status(404).json(error)
+        return new Response("Failed to fetch all prompts", {status:500})
     }
 }
