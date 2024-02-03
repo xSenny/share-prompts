@@ -44,7 +44,7 @@ const Feed = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await fetch('/api/prompt');
+            const res = await fetch(`/api/prompt?timestamp=${Date.now()}`);
             const data = await res.json();
             setPosts(data);
         }
