@@ -13,3 +13,5 @@ export const GET = async(req, res) => {
         return new Response("Failed to fetch all prompts", {status:500})
     }
 }
+
+export const dynamic = 'force-dynamic'
