@@ -1,6 +1,8 @@
 import {connectToDB} from "@utils/database";
 import Prompt from "@models/prompt";
+import {forceRevalidate} from "@utils/caching";
 export const GET = async(req, res) => {
+    forceRevalidate(req)
     try {
         await connectToDB();
         const prompts = await Prompt.find({}).populate('creator');
