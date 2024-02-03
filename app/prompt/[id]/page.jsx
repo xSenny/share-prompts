@@ -17,6 +17,7 @@ const SeePrompt = ({params}) => {
 
     useEffect(() => {
         const getPromptDetails = async () => {
+            if (!promptId) return alert("No prompt id!")
             const res = await fetch(`/api/prompt/${promptId}`);
             const data = await res.json();
             setPost({
